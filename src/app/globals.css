@@ -3,6 +3,7 @@
     --textColor: black;
     --softBg: #f0f0f0;
     --softTextColor: #626262;
+    --border: #d8d8d8;
 }
 
 * {
@@ -26,6 +27,7 @@ a {
     --textColor: #ddd;
     --softBg: #1f273a;
     --softTextColor: #a6a6a6;
+    --border: #d3d3d3;
 }
 
 .light {
@@ -33,12 +35,15 @@ a {
     --textColor: black;
     --softBg: #f0f0f0;
     --softTextColor: #626262;
+    --border: #d3d3d3c2;
 }
 
 .container {
     min-height: 100vh;
     background-color: var(--bg);
     color: var(--textColor);
+    /* padding-top: none; */
+    padding-top: 70px;
 }
 
 .wrapper {

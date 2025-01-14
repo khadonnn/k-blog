@@ -38,7 +38,7 @@ const ThemToggle = () => {
                     width={18}
                     height={18}
                     alt='Moon Icon'
-                    style={{ marginTop: "4px" }}
+                    style={{ marginTop: "5px", marginLeft: "1px" }}
                 />
             </motion.div>
 

@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import BurgerMenu from "../burgerMenu/BurgerMenu";
 const AuthLinks = () => {
     const [open, setOpen] = useState(false);
-    const status = "notauthenticated";
+    const status = "authenticated";
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -35,10 +35,13 @@ const AuthLinks = () => {
                     Login
                 </Link>
             ) : (
-                <Link href='/write' className={styles.link}>
-                    Write
+                <>
+                    {" "}
+                    <Link href='/write' className={styles.link}>
+                        Write
+                    </Link>
                     <span className={styles.link}>Logout</span>
-                </Link>
+                </>
             )}
             {/* <div className={styles.burger} onClick={() => setOpen(!open)}>
                 <div className={styles.line}></div>

@@ -26,7 +26,7 @@ const Footer = () => {
                 <div className={styles.icons}>
                     <Image src='/facebook.png' alt='' width={24} height={24} />
                     <Image src='/instagram.png' alt='' width={24} height={24} />
-                    <Image src='/tiktok.png' alt='' width={24} height={24} />
+                    <Image src='/twitter.png' alt='' width={24} height={24} />
                     <Image src='/youtube.png' alt='' width={24} height={24} />
                 </div>
             </div>

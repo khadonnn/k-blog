@@ -1,0 +1,80 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.select {
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    margin-left: 50px;
+    width: max-content;
+}
+
+.editor {
+    display: flex;
+    gap: 20px;
+    height: 700px;
+    position: relative;
+}
+
+.button,
+.addButton {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.addButton {
+    border-color: #1a8917;
+}
+
+.add {
+    display: flex;
+    gap: 20px;
+    background-color: var(--bg);
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    left: 50px;
+    /* fix */
+    width: max-content;
+    left: 0;
+    top: 3rem;
+    flex-direction: column;
+}
+
+.input {
+    padding: 20px;
+    font-size: 48px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: var(--textColor);
+}
+
+.input::placeholder {
+    color: #b3b3b1;
+}
+
+.textArea {
+    width: 100%;
+}
+
+.publish {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 10px 20px;
+    border: 1px solid rgba(168, 168, 168, 0.169);
+    background-color: #1f273a;
+    color: white;
+    cursor: pointer;
+    border-radius: 20px;
+}
