@@ -17,7 +17,7 @@ const Navbar = () => {
         }
         setLastScrollY(window.scrollY);
     }, [lastScrollY]);
-    console.log(lastScrollY);
+    // console.log(lastScrollY);
     useEffect(() => {
         // Lắng nghe sự kiện cuộn
         window.addEventListener("scroll", handleScroll);

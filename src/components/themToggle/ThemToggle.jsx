@@ -6,7 +6,7 @@ import { ThemeContext } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
 const ThemToggle = () => {
     const { theme, toggle } = useContext(ThemeContext);
-    console.log(theme);
+    // console.log(theme);
     return (
         <motion.div
             className={styles.container}
