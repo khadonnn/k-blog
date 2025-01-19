@@ -31,7 +31,9 @@ const AuthLinks = () => {
     };
     return (
         <>
-            {status === "unauthenticated" ? (
+            {status === "loading" ? (
+                <div>Loading...</div>
+            ) : status === "unauthenticated" ? (
                 <Link href='/login' className={styles.link}>
                     Login
                 </Link>

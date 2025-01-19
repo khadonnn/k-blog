@@ -3,7 +3,7 @@ import React from "react";
 import style from "./recommend.module.css";
 import Image from "next/image";
 import { motion } from "framer-motion";
-const Recommend = () => {
+const Recommend = ({ page, cat }) => {
     return (
         <div className={style.container}>
             <motion.div
@@ -34,7 +34,7 @@ const Recommend = () => {
                 }}
             >
                 <div className={style.trend}>
-                    <h1 className={style.title}>On Discuss</h1>
+                    <h1 className={style.title}>Trending {cat}</h1>
                     <span className={style.desc}>
                         Related to your posts and your comment in other blogs.
                         Lorem ipsum dolor sit, amet consectetur adipisicing
