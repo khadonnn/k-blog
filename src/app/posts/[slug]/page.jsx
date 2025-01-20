@@ -3,67 +3,63 @@ import styles from "./singlePage.module.css";
 import Image from "next/image";
 import Menu from "@/components/menu/Menu";
 import Comments from "@/components/comments/Comments";
-const SinglePage = () => {
+import SanitizedHTML from "@/components/sanitizedHTML";
+const getData = async (slug) => {
+    const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+        cache: "no-store",
+    });
+    if (!res.ok) {
+        throw new Error("Failed to fetch data");
+    }
+    return res.json();
+};
+
+const SinglePage = async ({ params }) => {
+    const { slug } = params;
+
+    const data = await getData(slug);
     return (
         <div className={styles.container}>
             <div className={styles.infoContainer}>
                 <div className={styles.textContainer}>
-                    <h1 className={styles.title}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Unde, ea?
-                    </h1>
+                    <h1 className={styles.title}>{data?.title}</h1>
                     <div className={styles.user}>
-                        <div className={styles.userImageContainer}>
-                            <Image
-                                src='/p1.jpeg'
-                                alt=''
-                                fill
-                                className={styles.avatar}
-                            />
-                        </div>
+                        {data?.user?.image && (
+                            <div className={styles.userImageContainer}>
+                                <Image
+                                    src={data.user.image}
+                                    alt=''
+                                    fill
+                                    className={styles.avatar}
+                                />
+                            </div>
+                        )}
                         <div className={styles.userTextContainer}>
-                            <span className={styles.username}>khadone</span>
+                            <span className={styles.username}>
+                                {data?.user.name}
+                            </span>
                             <span className={styles.date}>11.01.2025</span>
                         </div>
                     </div>
                 </div>
-                <div className={styles.imageContainer}>
-                    <Image
-                        src='/p1.jpeg'
-                        alt=''
-                        fill
-                        className={styles.image}
-                    />
-                </div>
+                {data?.img && (
+                    <div className={styles.imageContainer}>
+                        <Image
+                            src={data.img}
+                            alt=''
+                            fill
+                            className={styles.image}
+                        />
+                    </div>
+                )}
             </div>
             <div className={styles.content}>
                 <div className={styles.post}>
                     <div className={styles.description}>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Dolore ad dignissimos animi cupiditate quos
-                            itaque sint temporibus quod, veritatis dolores totam
-                            iusto sapiente delectus dolor cumque earum
-                            voluptatem tempora suscipit.
-                        </p>
-                        <h2>Lorem ipsum dolor sit amet.</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Dolore ad dignissimos animi cupiditate quos
-                            itaque sint temporibus quod, veritatis dolores totam
-                            iusto sapiente delectus dolor cumque earum
-                            voluptatem tempora suscipit.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur, adipisicing
-                            elit. Dolore ad dignissimos animi cupiditate quos
-                            itaque sint temporibus quod, veritatis dolores totam
-                            iusto sapiente delectus dolor cumque earum
-                            voluptatem tempora suscipit.
-                        </p>
+                        <SanitizedHTML html={data?.desc} />
                     </div>
                     <div className={styles.comments}>
-                        <Comments />
+                        <Comments postSlug={slug} />
                     </div>
                 </div>
                 <Menu />

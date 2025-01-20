@@ -7,20 +7,17 @@ import { useRouter } from "next/navigation";
 const LoginPage = () => {
     const router = useRouter();
     const { status } = useSession();
-
+    useEffect(() => {
+        if (status === "authenticated") {
+            router.push("/"); // Chuyển hướng đến trang chủ khi đã đăng nhập
+        } else if (status === "unauthenticated") {
+            router.push("/login"); // Chuyển hướng đến trang đăng nhập khi chưa xác thực
+        }
+    }, [status, router]);
     if (status === "loading") {
         return <div className={styles.loading}>Loading...</div>;
     }
-    if (status === "authenticated") {
-        router.push("/");
-        return null; // Chuyển hướng sau khi xác thực
-    }
 
-    //add
-    if (status === "unauthenticated") {
-        router.push("/auth/login"); // Chuyển hướng đến trang login
-        return null; // Tránh render thêm nội dung
-    }
     return (
         <div className={styles.container}>
             <div className={styles.wrapper}>
