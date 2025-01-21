@@ -29,10 +29,12 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    aspect-ratio: 1/1;
 }
 
 .addButton {
     border-color: #1a8917;
+    cursor: pointer;
 }
 
 .add {
@@ -49,7 +51,9 @@
     top: 3rem;
     flex-direction: column;
 }
-
+.img {
+    cursor: pointer;
+}
 .input {
     padding: 20px;
     font-size: 48px;
@@ -77,4 +81,16 @@
     color: white;
     cursor: pointer;
     border-radius: 20px;
+}
+
+/* preview */
+.previewContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 8%;
+    top: 0px;
+    transform: translateY(-85%);
+    padding: 10px 20px;
 }

@@ -4,6 +4,7 @@ const nextConfig = {
         domains: [
             "lh3.googleusercontent.com",
             "firebasestorage.googleapis.com",
+            "res.cloudinary.com",
         ],
     },
 };
