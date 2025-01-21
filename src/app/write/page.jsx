@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import ReactQuill from "react-quill";
-import { motion, AnimatePresence } from "framer-motion";
 
+import { motion, AnimatePresence } from "framer-motion";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 //framer
 const buttons = [
     {
