@@ -5,10 +5,13 @@ import { useEffect, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-
+import dynamic from "next/dynamic";
 import { motion, AnimatePresence } from "framer-motion";
+
+// Import ReactQuill chỉ khi client-side (SSR off)
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
-//framer
+
+// Các button sử dụng framer-motion
 const buttons = [
     {
         id: 1,
@@ -35,6 +38,7 @@ const buttons = [
         label: "video",
     },
 ];
+
 const WritePage = () => {
     const { status } = useSession();
     const router = useRouter();
@@ -47,35 +51,38 @@ const WritePage = () => {
     const [title, setTitle] = useState("");
     const [catSlug, setCatSlug] = useState("");
 
+    // Upload ảnh chỉ khi ở client-side
     useEffect(() => {
-        const uploadToCloudinary = async () => {
-            if (!file || media) return;
+        if (typeof window !== "undefined") {
+            const uploadToCloudinary = async () => {
+                if (!file || media) return;
 
-            const formData = new FormData();
-            formData.append("file", file);
-            formData.append("upload_preset", "rtzr6utq"); // Thay bằng upload preset của bạn
-            formData.append("folder", "image_blog");
-            formData.append(
-                "transformation",
-                "w_500,h_500,c_limit,q_auto,f_auto",
-            );
-            try {
-                const response = await fetch(
-                    "https://api.cloudinary.com/v1_1/dun3tupsv/image/upload",
-                    {
-                        method: "POST",
-                        body: formData,
-                    },
+                const formData = new FormData();
+                formData.append("file", file);
+                formData.append("upload_preset", "rtzr6utq");
+                formData.append("folder", "image_blog");
+                formData.append(
+                    "transformation",
+                    "w_500,h_500,c_limit,q_auto,f_auto",
                 );
+                try {
+                    const response = await fetch(
+                        "https://api.cloudinary.com/v1_1/dun3tupsv/image/upload",
+                        {
+                            method: "POST",
+                            body: formData,
+                        },
+                    );
 
-                const data = await response.json();
-                setMedia(data.secure_url);
-            } catch (error) {
-                console.error("Upload failed", error);
-            }
-        };
+                    const data = await response.json();
+                    setMedia(data.secure_url);
+                } catch (error) {
+                    console.error("Upload failed", error);
+                }
+            };
 
-        uploadToCloudinary();
+            uploadToCloudinary();
+        }
     }, [file, media]);
 
     if (status === "loading") {
@@ -159,8 +166,7 @@ const WritePage = () => {
                                 visible: {
                                     opacity: 1,
                                     transition: {
-                                        staggerChildren: 0.2, // Chỉ định khoảng thời gian giữa các phần tử con
-                                        when: "beforeChildren",
+                                        staggerChildren: 0.2,
                                     },
                                 },
                                 exit: {
@@ -176,7 +182,7 @@ const WritePage = () => {
                             <input
                                 type='file'
                                 id='image'
-                                onChange={handleFileChange} // Xử lý ảnh khi chọn file
+                                onChange={handleFileChange}
                                 style={{ display: "none" }}
                             />
                             {buttons.map(
