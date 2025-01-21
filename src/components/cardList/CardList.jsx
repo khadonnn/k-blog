@@ -5,7 +5,9 @@ import Image from "next/image";
 import Card from "@/components/card/Card";
 const getData = async (page, cat) => {
     const res = await fetch(
-        `http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`,
+        `https://k-blog-theta.vercel.app/api/posts?page=${page}&cat=${
+            cat || ""
+        }`,
         {
             cache: "no-store",
         },

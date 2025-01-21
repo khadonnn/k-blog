@@ -5,9 +5,12 @@ import Menu from "@/components/menu/Menu";
 import Comments from "@/components/comments/Comments";
 import SanitizedHTML from "@/components/sanitizedHTML";
 const getData = async (slug) => {
-    const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
-        cache: "no-store",
-    });
+    const res = await fetch(
+        `https://k-blog-theta.vercel.app/api/posts/${slug}`,
+        {
+            cache: "no-store",
+        },
+    );
     if (!res.ok) {
         throw new Error("Failed to fetch data");
     }

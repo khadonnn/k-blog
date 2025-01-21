@@ -19,14 +19,14 @@ const Comments = ({ postSlug }) => {
     const [desc, setDesc] = React.useState("");
 
     const { data, mutate, isLoading } = useSWR(
-        `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+        `https://k-blog-theta.vercel.app/api/comments?postSlug=${postSlug}`,
         fetcher,
     );
 
     const handleSubmit = async () => {
         try {
             await fetch(
-                `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+                `https://k-blog-theta.vercel.app/api/comments?postSlug=${postSlug}`,
                 {
                     method: "POST",
                     body: JSON.stringify({ desc, postSlug }),
