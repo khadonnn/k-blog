@@ -1,29 +1,29 @@
 {
-  "name": "starter",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@auth/prisma-adapter": "^2.7.4",
-    "@prisma/client": "^6.2.1",
-    "cloudinary": "^2.5.1",
-    "dompurify": "^3.2.3",
-    "eslint": "8.48.0",
-    "eslint-config-next": "13.4.19",
-    "motion": "^11.16.4",
-    "next": "13.4.19",
-    "next-auth": "^4.24.11",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-quill": "^2.0.0",
-    "swr": "^2.3.0"
-  },
-  "devDependencies": {
-    "prisma": "^6.2.1"
-  }
+    "name": "starter",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "prisma generate && next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@auth/prisma-adapter": "^2.7.4",
+        "@prisma/client": "^6.2.1",
+        "cloudinary": "^2.5.1",
+        "dompurify": "^3.2.3",
+        "eslint": "8.48.0",
+        "eslint-config-next": "13.4.19",
+        "motion": "^11.16.4",
+        "next": "13.4.19",
+        "next-auth": "^4.24.11",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-quill": "^2.0.0",
+        "swr": "^2.3.0"
+    },
+    "devDependencies": {
+        "prisma": "^6.2.1"
+    }
 }
