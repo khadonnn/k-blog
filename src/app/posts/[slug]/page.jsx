@@ -42,7 +42,9 @@ const SinglePage = async ({ params }) => {
                                 {data?.user.name}
                             </span>
                             <span className={styles.date}>
-                                {data?.createdAt.tostring(0, 10)}
+                                {data?.createdAt
+                                    ? data.createdAt.slice(0, 10)
+                                    : "N/A"}
                             </span>
                         </div>
                     </div>
