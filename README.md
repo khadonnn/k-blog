@@ -1,11 +1,5 @@
-## Getting Started
+### K-Blog :
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+✨ Home page: ![Homepage](./public/Homerm.png)  
+🔥 Categories: ![PayLayout](./public/Categoriesrm.png)  
+🚀 Write create blog: ![Write](./public/writerm.png)
